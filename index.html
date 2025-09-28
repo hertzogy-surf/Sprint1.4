@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit(16)">
+    <h1>Minesweeper</h1>
+    <div class="board">
+        <table>
+            <thead>
+                <tr>
+                    <td id="mines" class="text-header">0</td>
+                    <td id="button-smiley" class="smiley"><img src="img/smiley-happy.png" onclick="onInit()"></td>
+                    <td id="timer" class="text-header">0</td>
+                </tr>
+            </thead>
+        </table>
+        <table>
+            <tbody class="body">
+
+
+            </tbody>
+        </table>
+
+    </div>
+    <div class="level">
+        <table>
+            <tr>
+                <td onclick="onInit(16)">16</td>
+                <td onclick="onInit(25)">25</td>
+                <td onclick="onInit(36)">36</td>
+            </tr>
+        </table>
+    </div>
+    <div class="instructions">
+        <h1>Instructions</h1>
+        <p>Use left mouse to reveal a cell</p>
+        <p>or left mouse+ctrl to mark one</p>
+        <p>Press the smiley face to restart the game</p>
+
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

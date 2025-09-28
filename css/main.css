@@ -1,0 +1,70 @@
+body {
+    text-align: center;
+    background-color: gray;
+}
+
+img {
+    width: 60px;
+    height: 60px;
+}
+
+.text-header {
+    color: red;
+    background-color: black;
+    font-size: 50px;
+    font-weight: bold;
+    width: 90px;
+    height: 90px;
+}
+
+.cell {
+    width: 90px;
+    height: 90px;
+}
+
+.unrevealed {
+    background-color: lightgrey;
+    color: lightgrey;
+
+}
+.revealed {
+    background-color: white;
+    color: red;
+    font-size: 50px;
+
+}
+
+.revealed-zero {
+    background-color: white;
+    color: white;
+
+}
+
+.cell .black {
+    background-color:black;
+}
+
+.smiley {
+    width: 180px;
+    height: 90px;
+    background-color: whitesmoke;
+}
+
+.instructions {
+    color: white;
+}
+
+.level {
+    color:white;
+    font-size: 50px;
+}
+
+.level td {
+    background-color: black;
+    width: 120px;
+}
+
+td {
+    cursor: pointer;
+}
+
