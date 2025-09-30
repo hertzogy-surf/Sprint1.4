@@ -54,13 +54,13 @@ function setMinesOnBoard() {
         idOnBoard.push(i)
     }
     var randIdxes = []
-    
+
     switch (gLevel.SIZE) {
         case 4:
             gLevel.MINES = 2
             break;
         case 5:
-           gLevel.MINES = 7
+            gLevel.MINES = 7
             break;
         case 6:
             gLevel.MINES = 12
@@ -82,8 +82,8 @@ function setMinesOnBoard() {
 }
 
 function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min); 
-    max = Math.floor(max); 
+    min = Math.ceil(min);
+    max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -145,7 +145,7 @@ function renderBoard() {
     for (var i = 0; i < gLevel.SIZE; i++) {
         strHtml += `<tr>`
         for (var j = 0; j < gLevel.SIZE; j++) {
-            strHtml += `<td class="cell unrevealed" onclick="onCellClicked(this, event, ${i}, ${j})">${gBoard[i][j].minesAroundCount}</td>`
+            strHtml += `<td class="cell cell-${i}-${j} unrevealed" onclick="onCellClicked(this, event, ${i}, ${j})">${gBoard[i][j].minesAroundCount}</td>`
         }
         strHtml += `</tr>`
 
@@ -174,6 +174,7 @@ function onCellClicked(elCell, ev, i, j) {
     }
     else {
         revealCell(elCell, i, j)
+        expandReveal(i, j)
     }
 }
 
@@ -188,6 +189,7 @@ function markCell(elCell, i, j) {
         elCell.innerHTML = ''
     }
 
+    //setMinesTd()
     var elMines = document.querySelector('#mines')
     elMines.innerText = gLevel.MINES - gGame.markedCount
 }
@@ -209,8 +211,8 @@ function revealCell(elCell, i, j) {
         clearInterval(gInterval)
         gInterval = null
         gGame.isOn = false
+        return
     }
-
 
 }
 
@@ -218,6 +220,19 @@ function checkGameOver() {
 
 }
 
-function expandReveal(elCell, i, j) {
+function expandReveal(i, j) {
+    console.log('hi')
+    for (var k = i - 1; k <= i + 1; k++) {
+        if (k < 0 || k === gBoard.length) continue
+        for (var l = j - 1; l <= j + 1; l++) {
 
-}
+            if (l < 0 || l === gBoard.length) continue
+            if (k === i && l === j) continue
+            if (gBoard[k][l].isMine) continue
+            var classSelector = `.cell-${k}-${l}`
+            var elCell = document.querySelector(classSelector)
+            revealCell(elCell, k, l)
+            
+        }
+    }
+} d
